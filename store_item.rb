@@ -17,10 +17,10 @@ class Product
   attr_reader :item, :color, :price
   attr_writer :price
 
-  def initialize(item, color, price)
-    @item = item
-    @color = color
-    @price = price
+  def initialize(options_hash)
+    @item = options_hash[:item]
+    @color = options_hash[:color]
+    @price = options_hash[:price]
   end
 
   def print_info
@@ -29,7 +29,7 @@ class Product
 
 end
 
-item1 = Product.new("coffee mug", "pink", 8)
+item1 = Product.new({:item => "coffee mug", :color => "pink", :price => 8})
 item1.print_info
 item1.price = 9
 p item1.price
