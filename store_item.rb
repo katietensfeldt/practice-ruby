@@ -26,7 +26,18 @@ class Product
   def print_info
     puts "I sell #{color} #{item}s at $#{price} each"
   end
+end
 
+class Food < Product
+  def initialize(options_hash)
+    super
+    @shelf_life = options_hash[:shelf_life] || "2 weeks"
+  end
+
+  def print_info
+    super
+    puts "It has a shelf life of #{@shelf_life}"
+  end
 end
 
 item1 = Product.new({:item => "coffee mug", :color => "pink", :price => 8})
@@ -34,3 +45,7 @@ item1.print_info
 item1.price = 9
 p item1.price
 item1.print_info
+
+item2 = Food.new({item: "coffee", color:"brown", price: 6, shelf_life: "3 weeks"})
+
+item2.print_info
